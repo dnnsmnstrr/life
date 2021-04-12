@@ -19,12 +19,14 @@ function single_event(e) {
   return (e.single || !e.date_end || e.date_start === e.date_end) && (!e.ongoing);
 }
 
-const LifeTimeline = ({ subject, events = [], birthday_color = '#F89542', project_days = 200, today = new Date(), ...props}) => {
+const LifeTimeline = ({ subject, events = [], birthday_color = '#F89542', project_days = 200, today = new Date(), alignYear = true, ...props}) => {
   const [loaded, setLoaded] = useState(false)
   const [lookup, setLookup] = useState({})
   const [lastEventDate, setLastEventDate] = useState(new Date())
   useEffect(() => {
-    ReactTooltip.rebuild()
+    if (lookup) {
+      ReactTooltip.rebuild()
+    }
   }, [lookup])
 
   const event_end_date = (e) => {
@@ -36,18 +38,19 @@ const LifeTimeline = ({ subject, events = [], birthday_color = '#F89542', projec
   		let projected_end = new Date(lastEventDate.getTime());
   		projected_end.setDate(projected_end.getDate() + project_days);
   		return projected_end;
-  	}, [lastEventDate, project_days])
+  	}, [lastEventDate, project_days]
+  )
 
   const all_weeks = useCallback((fn) => {
     let {birthday} = subject
     let end = get_end();
-    let cursor = new Date(birthday.getTime());
+    let cursor = alignYear ? new Date(birthday.getFullYear(), 0, 1) : new Date(birthday.getTime());
     while (cursor <= end) {
       let d = new Date(cursor.getTime());
       cursor.setDate(cursor.getDate() + 7);
       fn(d, new Date(cursor.getTime()));
     }
-  }, [get_end, subject])
+  }, [get_end, subject, alignYear])
 
   const get_events_in_week = useCallback((week_start, week_end) => {
 		let {birthday, name} = subject
@@ -115,6 +118,7 @@ const LifeTimeline = ({ subject, events = [], birthday_color = '#F89542', projec
   }, [all_weeks, get_events_in_week, setLookup])
 
   useEffect(() => {
+    console.log('events', events)
       let last_event_date = new Date();
   		if (events && events.length > 0) {
   			let latest_event = events.sort((e1, e2) => {
@@ -132,9 +136,9 @@ const LifeTimeline = ({ subject, events = [], birthday_color = '#F89542', projec
       setLastEventDate(last_event_date)
       generate_lookup()
       setLoaded(true)
-    }, [events, generate_lookup])
+    }, [events])
 
-	function render_week(date_start, date_end) {
+	function render_week(date_start, date_end, weekno) {
 		let date = print_date(date_start)
 		let res = lookup[date]
 		let _single;
@@ -145,11 +149,13 @@ const LifeTimeline = ({ subject, events = [], birthday_color = '#F89542', projec
 			({events, color, single} = res);
 		}
 		let future = date_start > today;
+		let preBirth = subject ? date_start > subject.birthday : false;
 		let st = {};
 		if (events.length > 0) st.backgroundColor = color || '#1AA9FF';
 		let tips = [date].concat(events.map((e) => {
 			return e.title;
 		}));
+    tips = tips.concat(weekno)
 		let cls = 'week';
 		if (future) cls += ' future';
 		if (single) _single = <span className="singleEvents"></span>;
@@ -158,8 +164,9 @@ const LifeTimeline = ({ subject, events = [], birthday_color = '#F89542', projec
 
 	function render_all_weeks() {
 		let weeks = [];
+    let counter = 1
 		all_weeks((start, end) => {
-			weeks.push(render_week(start, end));
+			weeks.push(render_week(start, end, counter++));
 		});
 		return weeks;
 	}
@@ -167,7 +174,7 @@ const LifeTimeline = ({ subject, events = [], birthday_color = '#F89542', projec
   return (
     <div>
       {loaded && <ReactTooltip place="top" effect="solid" />}
-      <div className="LifeTimeline">
+      <div className="LifeTimeline" style={{ width: `${19*52}px`}}>
         { render_all_weeks() }
       </div>
     </div>
