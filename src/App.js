@@ -5,7 +5,7 @@ import LifeTimeline from './LifeTimeline'
 function App() {
   const [events, setEvents] = useState([])
   const handleEvents = async (cb) => {
-    const response = await fetch('https://next.muensterer.xyz/api/events')
+    const response = await fetch('https://dnnsmnstrr.vercel.app/api/events')
     const json = await response.json()
     console.log('json', json)
     setEvents(json)
