@@ -1,5 +1,6 @@
 .LifeTimeline {
   display: block;
+  padding: 20px;
 }
 .LifeTimeline > .week {
   display: inline-block;

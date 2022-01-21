@@ -1,27 +1,39 @@
-import React, {useState, useEffect} from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import './App.css'
 
 import LifeTimeline from './LifeTimeline'
+
+const API_URL = 'https://dnnsmnstrr.vercel.app/api/'
+
 function App() {
   const [events, setEvents] = useState([])
-  const handleEvents = async (cb) => {
-    const response = await fetch('https://dnnsmnstrr.vercel.app/api/events')
+  const [subject, setSubject] = useState({})
+  
+  const loadEvents = async () => {
+    const response = await fetch(API_URL + 'events')
     const json = await response.json()
-    console.log('json', json)
     setEvents(json)
   }
+  const loadSubject = async () => {
+    const response = await fetch(API_URL + 'dennis')
+    const json = await response.json()
+    setSubject(json)
+  }
+  
   useEffect(() => {
-    handleEvents()
+    loadEvents()
+    loadSubject()
   }, [])
+  
   return (
     <div className="App">
-        <p>
+        <p className="title">
           My life in weeks
         </p>
         <LifeTimeline
-      events={events}
-      subject={{birthday: new Date('1997-06-16'), name: 'Dennis'}}
-      />
+          events={events}
+          subject={subject}
+        />
     </div>
   );
 }
