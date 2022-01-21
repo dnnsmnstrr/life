@@ -162,12 +162,17 @@ const LifeTimeline = ({ subject, events = [], birthdayColor = '#F89542', futureD
     const isFutureDate = start > today
     const style = {}
     if (events.length > 0) style.backgroundColor = color || '#1AA9FF'
+    let link
     const tips = [date].concat(events.map((e) => {
+      if (e.url) link = e.url
       return e.title
     }))
     let cls = 'week'
     if (isFutureDate) cls += ' future'
     if (single) _single = <span className='singleEvents'></span>
+    if (link) {
+      return <a className={cls} key={date} style={style} data-tip={tips.join(', ')} href={link} target='_blank' rel="noopener noreferrer">{_single}</a>
+    }
     return <div className={cls} key={date} style={style} data-tip={tips.join(', ')}>{_single}</div>
   }
 
