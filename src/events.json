@@ -1,0 +1,108 @@
+[
+  {
+    "name": "Is born in Durham, North Carolina",
+    "location": "Durham, NC",
+    "startDate": "1997-06-16T00:00:00.000Z",
+    "endDate": "1997-06-16T00:00:00.000Z",
+    "color": "#03346C"
+  },
+  {
+    "name": "Lives in Garching (close to Munich).",
+    "startDate": "2000-09-01T00:00:00.000Z",
+    "endDate": "2004-05-30T00:00:00.000Z",
+    "location": "Garching, Germany",
+    "color": "#1087D7"
+  },
+  {
+    "name": "Spends a year in Birmingham, Alabama.",
+    "startDate": "2004-07-01T00:00:00.000Z",
+    "endDate": "2005-08-01T00:00:00.000Z",
+    "location": "Birmingham, AL",
+    "color": "#9A0018"
+  },
+  {
+    "name": "One more year in Garching.",
+    "startDate": "2005-09-01T00:00:00.000Z",
+    "endDate": "2007-07-30T00:00:00.000Z",
+    "location": "Garching, Germany",
+    "color": "#1087D7"
+  },
+  {
+    "name": "Lives in Markleeberg (close to Leipzig), Germany.",
+    "startDate": "2007-08-01T00:00:00.000Z",
+    "endDate": "2012-07-30T00:00:00.000Z",
+    "location": "Markkleeberg, Germany",
+    "color": "#286724"
+  },
+  {
+    "name": "Visits the German International School New York.",
+    "startDate": "2012-09-01T00:00:00.000Z",
+    "endDate": "2015-05-30T00:00:00.000Z",
+    "location": "New Rochelle, NY",
+    "color": "#1D226D",
+    "url": "https://www.gisny.org/"
+  },
+  {
+    "name": "FSJ at the Behindertenseelsorge Mainz",
+    "startDate": "2015-10-01T00:00:00.000Z",
+    "endDate": "2016-04-01T00:00:00.000Z",
+    "location": "Mainz, Germany",
+    "color": "#A70031",
+    "url": "https://bistummainz.de/seelsorge/behindertenseelsorge/"
+  },
+  {
+    "name": "Studies Engineering Sciences at TUM.",
+    "startDate": "2016-10-15T00:00:00.000Z",
+    "endDate": "2017-08-30T00:00:00.000Z",
+    "location": "Garching, Germany",
+    "color": "#2459A1",
+    "url": "https://www.mse.tum.de/startseite/"
+  },
+  {
+    "name": "Attends the Apple Developer Academy",
+    "startDate": "2017-10-20T00:00:00.000Z",
+    "endDate": "2018-06-30T00:00:00.000Z",
+    "location": "Naples, Italy",
+    "color": "#2351D5",
+    "url": "https://www.developeracademy.unina.it/en/"
+  },
+  {
+    "name": "Studies Computer Science at TU Darmstadt",
+    "startDate": "2018-10-15T00:00:00.000Z",
+    "endDate": "2019-04-01T00:00:00.000Z",
+    "location": "Wiesbaden, Germany",
+    "color": "#D4DC1F"
+  },
+  {
+    "name": "Internship at hpm.",
+    "startDate": "2019-05-12T00:00:00.000Z",
+    "endDate": "2022-07-30T00:00:00.000Z",
+    "location": "Wiesbaden, Germany",
+    "color": "#0F81FD",
+    "url": "https://hpm.agency"
+  },
+  {
+    "name": "Apprenticeship at hpm.",
+    "startDate": "2019-08-01T00:00:00.000Z",
+    "endDate": "2022-01-14T00:00:00.000Z",
+    "location": "Wiesbaden, Germany",
+    "color": "#0F81FD",
+    "url": "https://hpm.agency"
+  },
+  {
+    "name": "Developer at hpm.",
+    "startDate": "2022-01-17T00:00:00.000Z",
+    "endDate": "2024-09-30T00:00:00.000Z",
+    "location": "Wiesbaden, Germany",
+    "color": "#0F81FD",
+    "url": "https://hpm.agency"
+  },
+  {
+    "name": "Software Engineer at Digital Product School.",
+    "startDate": "2024-09-06T00:00:00.000Z",
+    "endDate": "2024-11-30T00:00:00.000Z",
+    "location": "Munich, Germany",
+    "color": "#FF00A1",
+    "url": "https://www.digitalproductschool.io/"
+  }
+]
