@@ -71,7 +71,8 @@ const LifeTimeline: React.FC<LifeTimelineProps> = ({ subject, events = [], birth
     while (currentDate <= end) {
       const weekEnd = new Date(currentDate.getTime());
       weekEnd.setDate(weekEnd.getDate() + 6);
-
+      weekEnd.setHours(23, 59, 59, 999);
+      
       const weekEvents = events.filter(e => {
         const eventStart = new Date(e.startDate);
         const eventEnd = e.endDate ? new Date(e.endDate) : today;

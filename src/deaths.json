@@ -10,8 +10,13 @@
     "color": "#DC143C"
   },
   {
+    "name": "Martin Luther King Jr.",
+    "daysLived": 14324,
+    "color": "#DC143C"
+  },
+  {
     "name": "Marie Curie",
-    "daysLived": 24270,
+    "daysLived": 24345,
     "color": "#FF69B4"
   },
   {
@@ -46,12 +51,35 @@
   },
   {
     "name": "Tupac Shakur",
-    "daysLived": 9234,
+    "daysLived": 9221,
     "color": "#FF6347"
   },
   {
     "name": "Steve Jobs",
-    "daysLived": 20671,
+    "daysLived": 20670,
     "color": "#A9A9A9"
+  },
+  {
+    "name": "Marilyn Monroe",
+    "daysLived": 10955
+  },
+  {
+    "name": "Nelson Mandela",
+    "daysLived": 34784
+  },
+  {
+
+    "name": "Elvis Presley",
+    "daysLived": 15560
+  },
+  {
+
+    "name": "Freddie Mercury",
+    "daysLived": 16516
+  },
+  {
+
+    "name": "Anne Frank",
+    "daysLived": 5724
   }
 ]

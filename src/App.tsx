@@ -9,6 +9,7 @@ import { SettingsIcon, XIcon } from 'lucide-react'
 function App() {
   const [events, setEvents] = useState<Event[]>([])
   const [showDeaths, setShowDeaths] = useState<boolean>(false) // New state for deaths visibility
+  const [lifeExpectancy, setLifeExpectancy] = useState<number>(80); // New state for life expectancy
   const dialogRef = useRef<HTMLDialogElement>(null); // Reference to the dialog
 
   const loadEvents = async () => {
@@ -56,12 +57,22 @@ function App() {
             />
             <span style={{ marginLeft: 5 }}>Show Deaths</span>
           </label>
+
+          <label style={{ display: 'flex', alignItems: 'center', marginTop: 10 }}>
+            <span style={{ marginRight: 5 }}>Life Expectancy:</span>
+            <input 
+              type="number" 
+              value={lifeExpectancy} 
+              onChange={(e) => setLifeExpectancy(Number(e.target.value))} 
+              style={{ width: 60 }} 
+            />
+          </label>
         </dialog>
         
         <LifeTimeline
           events={events}
-          famousDeaths={showDeaths ? deaths : []} // Pass deaths based on visibility
-          subject={{ name: 'Dennis', birthdate: '1997-06-16', lifeExpectancy: 80 }}
+          famousDeaths={showDeaths ? deaths : []}
+          subject={{ name: 'Dennis', birthdate: '1997-06-16', lifeExpectancy }} 
         />
       </div>
     </>
