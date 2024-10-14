@@ -3,6 +3,7 @@ import { Tooltip } from 'react-tooltip';
 import { Event, Subject } from './types';
 
 import './react-life-timeline.css';
+import { Skull } from 'lucide-react';
 
 interface LifeTimelineProps {
   subject: Subject;
@@ -10,6 +11,7 @@ interface LifeTimelineProps {
   birthdayColor?: string;
   futureDays?: number;
   today?: Date;
+  famousDeaths?: { name: string; daysLived: number }[];
 }
 
 interface Week {
@@ -18,6 +20,7 @@ interface Week {
   events: Event[];
   color: string | null;
   single?: boolean;
+  hasDeath?: boolean;
 }
 
 const getEnd = (lastEventDate: Date, futureDays: number): Date => {
@@ -46,7 +49,7 @@ const findLastEventDate = (events: Event[]): Date => {
 const DAYS_IN_A_YEAR = 365
 const AVERAGE_LIFE_SPAN = 79 // years
 
-const LifeTimeline: React.FC<LifeTimelineProps> = ({ subject, events = [], birthdayColor = '#F89542', today = new Date(), futureDays }) => {
+const LifeTimeline: React.FC<LifeTimelineProps> = ({ subject, events = [], birthdayColor = '#F89542', today = new Date(), futureDays, famousDeaths = [] }) => {
   const [loaded, setLoaded] = useState(false);
   const [weeks, setWeeks] = useState<Week[]>([]);
 
@@ -75,6 +78,27 @@ const LifeTimeline: React.FC<LifeTimelineProps> = ({ subject, events = [], birth
         return (eventStart <= weekEnd && eventEnd >= currentDate) || (e.ongoing && eventStart <= weekEnd);
       });
 
+      // Add famous deaths to the week events
+      const weekFamousDeaths = famousDeaths.filter(death => {
+        const birthDate = new Date(subject.birthdate);
+        const deathDate = new Date(birthDate.getTime() + (death.daysLived * 24 * 60 * 60 * 1000));
+        return deathDate >= currentDate && deathDate <= weekEnd;
+      });
+      console.log(weekFamousDeaths)
+
+      let hasDeath = false
+      weekFamousDeaths.forEach(death => {
+        const birthDate = new Date(subject.birthdate);
+        const deathDate = new Date(birthDate.getTime() + (death.daysLived * 24 * 60 * 60 * 1000)).toISOString();
+        hasDeath = true
+        weekEvents.push({
+          name: `${death.name} died at ${Math.floor(death.daysLived / 365)} years old`,
+          startDate: deathDate,
+          endDate: deathDate,
+          keywords: ['death'],
+        });
+      });
+
       const isBirthday = birth.getMonth() === currentDate.getMonth() && birth.getDate() >= currentDate.getDate() && birth.getDate() <= weekEnd.getDate();
       const age = currentDate.getFullYear() - birth.getFullYear()
       if (isBirthday && age) {
@@ -92,13 +116,14 @@ const LifeTimeline: React.FC<LifeTimelineProps> = ({ subject, events = [], birth
         end: weekEnd,
         events: weekEvents,
         color: isBirthday ? birthdayColor : null,
+        hasDeath
       });
 
       currentDate.setDate(currentDate.getDate() + 7);
     }
 
     return weeks;
-  }, [subject, events, birthdayColor, futureDays]);
+  }, [subject, events, birthdayColor, futureDays, famousDeaths]);
 
   useEffect(() => {
     setWeeks(generateWeeks());
@@ -122,7 +147,8 @@ const LifeTimeline: React.FC<LifeTimelineProps> = ({ subject, events = [], birth
     const weekStyle: React.CSSProperties = {
       backgroundColor: color || undefined,
       opacity: future ? 0.5 : 0.7,
-      cursor: url ? 'pointer' : 'default'
+      cursor: url ? 'pointer' : 'default',
+      position: 'relative'
     };
 
     // if (week.single) weekStyle.borderRadius = '50%';
@@ -145,7 +171,9 @@ const LifeTimeline: React.FC<LifeTimelineProps> = ({ subject, events = [], birth
         data-tooltip-html={tip}
         data-tooltip-place="top"
         onClick={clickHandler}
-      />
+      >
+        {week.hasDeath && <Skull style={{ width: 16, height: 14, marginLeft: -8, position: 'absolute' }} />}
+      </div>
     );
   }, [today]);
 
