@@ -1,0 +1,85 @@
+[
+  {
+    "name": "Albert Einstein",
+    "daysLived": 27795,
+    "color": "#FFD700"
+  },
+  {
+    "name": "Leonardo da Vinci",
+    "daysLived": 24696,
+    "color": "#DC143C"
+  },
+  {
+    "name": "Martin Luther King Jr.",
+    "daysLived": 14324,
+    "color": "#DC143C"
+  },
+  {
+    "name": "Marie Curie",
+    "daysLived": 24345,
+    "color": "#FF69B4"
+  },
+  {
+    "name": "John Lennon",
+    "daysLived": 14610,
+    "color": "#FF4500"
+  },
+  {
+    "name": "Stephen Hawking",
+    "daysLived": 27808,
+    "color": "#4682B4"
+  },
+  {
+    "name": "Michael Jackson",
+    "daysLived": 18489,
+    "color": "#FFD700"
+  },
+  {
+    "name": "Kurt Cobain",
+    "daysLived": 9912,
+    "color": "#A52A2A"
+  },
+  {
+    "name": "Amy Winehouse",
+    "daysLived": 10023,
+    "color": "#8B0000"
+  },
+  {
+    "name": "Jimi Hendrix",
+    "daysLived": 9948,
+    "color": "#FF4500"
+  },
+  {
+    "name": "Tupac Shakur",
+    "daysLived": 9221,
+    "color": "#FF6347"
+  },
+  {
+    "name": "Steve Jobs",
+    "daysLived": 20670,
+    "color": "#A9A9A9"
+  },
+  {
+    "name": "Marilyn Monroe",
+    "daysLived": 10955
+  },
+  {
+    "name": "Nelson Mandela",
+    "daysLived": 34784
+  },
+  {
+
+    "name": "Elvis Presley",
+    "daysLived": 15560
+  },
+  {
+
+    "name": "Freddie Mercury",
+    "daysLived": 16516
+  },
+  {
+
+    "name": "Anne Frank",
+    "daysLived": 5724
+  }
+]
